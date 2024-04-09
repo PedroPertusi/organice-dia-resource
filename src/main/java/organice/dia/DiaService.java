@@ -20,10 +20,7 @@ public class DiaService {
     @Autowired
     private DiaRepository diaRepository;
 
-    public Dia create(Dia in, String idUser) {
-        in.data_criacao(new Date());
-        in.dia_da_semana(DiaParser.calculaDiaDaSemana(in.data()));
-
+    public Dia create(Dia in) {
         return diaRepository.save(new DiaModel(in)).to();
     }
 

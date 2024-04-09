@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import organice.lembrete.LembreteOut;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +39,8 @@ public class DiaResource implements DiaController {
     public ResponseEntity<DiaOut> create(String idUser, DiaIn diaIn) {
         // Implementação exemplo
         Dia dia = DiaParser.toDia(diaIn); // Assume que você tem uma classe DiaParser para converter DiaIn em Dia
-        dia = diaService.create(dia, idUser);
+        dia.id_usuario(idUser);
+        dia = diaService.create(dia);
         return ResponseEntity.created(
             ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -54,7 +54,7 @@ public class DiaResource implements DiaController {
     @Operation(summary = "Retorna todos os lembretes de um usuário em certa data", description = "Retorna todos os lembretes de um usuário em certa data")
     public ResponseEntity<List<LembreteOut>> read_lembretes(String UserId, DiaData data) {
         // Implementação exemplo
-        return diaService.getLembretes(UserId, data.dia()); // E uma conversão de volta para DiaOut
+        return diaService.getLembretes(UserId, data.dia()); 
     }
 
     @Override

@@ -1,26 +1,20 @@
 package organice.dia;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DiaParser {
 
-    // Converte DiaIn para Dia
     public static Dia toDia(DiaIn diaIn) {
-        // Supondo que a entidade Dia tenha um método builder() similar ao Account
         return Dia.builder()
                 .data(diaIn.dia())
                 .descricao(diaIn.descricao())
-                // Define outros campos necessários aqui, como ID do usuário se aplicável
-                .data_criacao(new java.util.Date()) // Exemplo: data de criação definida como agora
-                .dia_da_semana(calculaDiaDaSemana(diaIn.dia())) // Exemplo de cálculo do dia da semana
+                .data_criacao(new Date())
+                .dia_da_semana(calculaDiaDaSemana(diaIn.dia())) 
                 .build();
     }
 
-    // Converte Dia para DiaOut
     public static DiaOut toDiaOut(Dia dia) {
-        // Supondo que a classe DiaOut tenha um método builder()
         return DiaOut.builder()
                 .dia(dia.data())
                 .data_criacao(dia.data_criacao())
