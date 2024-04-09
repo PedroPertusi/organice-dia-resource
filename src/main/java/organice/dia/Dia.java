@@ -18,6 +18,4 @@ public class Dia {
     private String dia_da_semana;
     private String descricao;
     private String id_usuario;
-    private List<Lembrete> lembretes;
-
 }

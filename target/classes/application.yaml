@@ -1,6 +1,6 @@
 spring:
   application:
-    name: organice-account
+    name: organice-dia
   datasource:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/organice}
     username: ${DATABASE_USERNAME:organice}
@@ -8,11 +8,17 @@ spring:
     driver-class-name: org.postgresql.Driver
   flyway:
     baseline-on-migrate: true
-    schemas: account
+    schemas: dia
   jpa:
     properties:
       hibernate:
-        default_schema: account
+        default_schema: dia
+
+springdoc:
+  api-docs:
+    path: /dia/v3/api-docs
+  swagger-ui:
+    path: /dia/swagger-ui.html
 
 
 eureka:

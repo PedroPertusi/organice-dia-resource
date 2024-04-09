@@ -6,9 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DiaRepository extends CrudRepository<DiatModel, String> {
+public interface DiaRepository extends CrudRepository<DiaModel, String> {
     
-    // Optional<AccountModel> findByEmailAndHash(String email, String hash);
-
     
 }
