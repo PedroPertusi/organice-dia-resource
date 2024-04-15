@@ -25,6 +25,7 @@ public class DiaService {
     }
 
     public ResponseEntity<List<LembreteOut>> getLembretes(String userId, Date data) {
+        System.out.println(data);
         LembreteDateIn date = new LembreteDateIn(data);
         return lembreteController.getByDate(userId, date);
     }
