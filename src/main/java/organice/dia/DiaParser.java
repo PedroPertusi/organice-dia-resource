@@ -1,17 +1,24 @@
 package organice.dia;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DiaParser {
 
     public static Dia toDia(DiaIn diaIn) {
-        return Dia.builder()
-                .data(diaIn.dia())
-                .descricao(diaIn.descricao())
-                .data_criacao(new Date())
-                .dia_da_semana(calculaDiaDaSemana(diaIn.dia())) 
-                .build();
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            return Dia.builder()
+                    .data(formatter.parse(diaIn.dia()))
+                    .descricao(diaIn.descricao())
+                    .data_criacao(new Date())
+                    .dia_da_semana(calculaDiaDaSemana(formatter.parse(diaIn.dia()))) 
+                    .build();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static DiaOut toDiaOut(Dia dia) {
