@@ -11,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import organice.lembrete.LembreteDateIn;
 import organice.lembrete.LembreteOut;
 
 import java.util.List;
@@ -53,9 +52,9 @@ public class DiaResource implements DiaController {
 
     @Override
     @Operation(summary = "Retorna todos os lembretes de um usuário em certa data", description = "Retorna todos os lembretes de um usuário em certa data")
-    public ResponseEntity<List<LembreteOut>> read_lembretes(String UserId, LembreteDateIn data) {
+    public ResponseEntity<List<LembreteOut>> read_lembretes(String UserId, DiaData data) {
         // Implementação exemplo
-        return diaService.getLembretes(UserId, data); 
+        return diaService.getLembretes(UserId, data.dia()); 
     }
 
     @Override

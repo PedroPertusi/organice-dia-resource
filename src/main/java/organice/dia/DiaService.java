@@ -24,9 +24,10 @@ public class DiaService {
         return diaRepository.save(new DiaModel(in)).to();
     }
 
-    public ResponseEntity<List<LembreteOut>> getLembretes(String userId, LembreteDateIn data) {
+    public ResponseEntity<List<LembreteOut>> getLembretes(String userId, Date data) {
         System.out.println(data);
-        return lembreteController.getByDate(userId, data);
+        LembreteDateIn date = new LembreteDateIn(data);
+        return lembreteController.getByDate(userId, date);
     }
 
     public void delete(String id_dia) {
