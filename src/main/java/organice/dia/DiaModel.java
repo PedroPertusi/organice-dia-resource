@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name = "dia")
@@ -34,20 +36,25 @@ public class DiaModel {
     private String id_usuario;
 
     public DiaModel(Dia dia) {
-
-        this.data = dia.data();
-        this.descricao = dia.descricao();
-        this.data_criacao = dia.data_criacao();
-        this.dia_da_semana = dia.dia_da_semana();
-        this.descricao = dia.descricao();
-        this.id_usuario = dia.id_usuario();
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            this.data = formatter.parse(dia.data());
+            this.descricao = dia.descricao();
+            this.data_criacao = formatter.parse(dia.data_criacao());
+            this.dia_da_semana = dia.dia_da_semana();
+            this.descricao = dia.descricao();
+            this.id_usuario = dia.id_usuario();
+        } catch (Exception e) {
+            System.out.println("deu pau no Dia Model");
+            return;
+        }
     }   
 
     public  Dia to(){
         return Dia.builder()
             .id(id)
-            .data(data)
-            .data_criacao(data_criacao)
+            .data(data.toString())
+            .data_criacao(data_criacao.toString())
             .dia_da_semana(dia_da_semana)
             .descricao(descricao)
             .id_usuario(id_usuario)

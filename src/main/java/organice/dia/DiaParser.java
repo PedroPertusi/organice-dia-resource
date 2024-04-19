@@ -11,12 +11,13 @@ public class DiaParser {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
             return Dia.builder()
-                    .data(formatter.parse(diaIn.dia()))
+                    .data(diaIn.dia())
                     .descricao(diaIn.descricao())
-                    .data_criacao(new Date())
+                    .data_criacao(formatter.format(new Date()))
                     .dia_da_semana(calculaDiaDaSemana(formatter.parse(diaIn.dia()))) 
                     .build();
         } catch (Exception e) {
+            System.out.println("Deu Pau no Dia In");
             return null;
         }
     }

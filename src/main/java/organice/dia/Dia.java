@@ -1,6 +1,5 @@
 package organice.dia;
 
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,8 +12,8 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor @AllArgsConstructor
 public class Dia {
     private String id;
-    private Date data;
-    private Date data_criacao;
+    private String data;
+    private String data_criacao;
     private String dia_da_semana;
     private String descricao;
     private String id_usuario;
