@@ -1,18 +1,24 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: organice-dia
+    name: organice-lembrete
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/organice}
-    username: ${DATABASE_USERNAME:organice}
-    password: ${DATABASE_PASSWORD:organice123321}
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:Post123321}
     driver-class-name: org.postgresql.Driver
   flyway:
     baseline-on-migrate: true
-    schemas: dia
+    schemas: lembrete
   jpa:
     properties:
       hibernate:
-        default_schema: dia
+        default_schema: lembrete
+  mvc:
+    format:
+      date-time: "yyyy-MM-dd HH:mm:ss"
 
 springdoc:
   api-docs:
