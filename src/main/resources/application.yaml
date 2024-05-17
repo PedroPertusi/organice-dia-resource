@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: organice-lembrete
+    name: organice-dia
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
     username: ${POSTGRES_USER:postgres}
@@ -11,11 +11,11 @@ spring:
     driver-class-name: org.postgresql.Driver
   flyway:
     baseline-on-migrate: true
-    schemas: lembrete
+    schemas: dia
   jpa:
     properties:
       hibernate:
-        default_schema: lembrete
+        default_schema: dia
   mvc:
     format:
       date-time: "yyyy-MM-dd HH:mm:ss"
@@ -27,12 +27,12 @@ springdoc:
     path: /dia/swagger-ui.html
 
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+# eureka:
+#   client:
+#     register-with-eureka: true
+#     fetch-registry: true
+#     service-url:
+#       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
 
 management:
   endpoints:
