@@ -27,12 +27,12 @@ springdoc:
     path: /dia/swagger-ui.html
 
 
-# eureka:
-#   client:
-#     register-with-eureka: true
-#     fetch-registry: true
-#     service-url:
-#       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
 
 management:
   endpoints:
