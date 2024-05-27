@@ -40,3 +40,11 @@ management:
       base-path: /dia/actuator
       exposure:
         include: [ 'prometheus' ]
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      LembreteByData-CB:
+        minimumNumberOfCalls: 5
+        slidingWindowSize: 10
